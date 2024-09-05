@@ -3,215 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Express Audience Targeting Hack</title>
+    <meta name="description" content="Say 'Hi' to me on WhatsApp" />
+    <meta name="keywords" content="ruth, kadiri, Nollywood" />
+    <meta name="author" content="ruth Kadiri" />
+
+    <!-- Open Graph meta tags for social media sharing -->
+    <meta property="og:title" content="WhatsApp Chat" />
+    <meta property="og:description" content="Say 'Hi' to me on WhatsApp" />
+    <meta
+      property="og:image"
+      content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCcOAgKpVRCsDSbB8DZkl580NVUM7h9Hmc2-7u41KY_KFEB-HhYSImFS5rQAyVrnEePaxU-bw7asTmYfNf82qvFSgcT-zZHGC17rxvDcUkY9mIHtOlIr41QA6AbWSBHSRFWiti4YuCCFKXYxZ0X94LrgcK1sL9B-tnCVb1D8htU4V_oaZ5PJuopVhAbCYo/s512/whatsapp.png"
+    />
+    <meta property="og:url" content="https://api.whatsapp.com/" />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Card meta tags for Twitter sharing -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@YourTwitterHandle" />
+    <meta name="twitter:title" content="Your Blog Post Title" />
+    <meta
+      name="twitter:description"
+      content="Your blog post description goes here"
+    />
+    <meta
+      name="twitter:image"
+      content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgCcOAgKpVRCsDSbB8DZkl580NVUM7h9Hmc2-7u41KY_KFEB-HhYSImFS5rQAyVrnEePaxU-bw7asTmYfNf82qvFSgcT-zZHGC17rxvDcUkY9mIHtOlIr41QA6AbWSBHSRFWiti4YuCCFKXYxZ0X94LrgcK1sL9B-tnCVb1D8htU4V_oaZ5PJuopVhAbCYo/s512/whatsapp.png"
+    />
+
+    <title>WhatsApp Chat</title>
+
     <link rel="stylesheet" href="styles.css" />
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        color: #333;
-      }
-
-      nav {
-        background-color: #333;
-        color: green;
-        padding: 1rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      nav .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-      }
-
-      nav .nav-links {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-      }
-
-      nav .nav-links li {
-        margin-left: 2rem;
-      }
-
-      nav .nav-links a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-      }
-
-      nav .nav-links a:hover {
-        color: #f4f4f4;
-        text-decoration: underline;
-      }
-
-      .hero {
-        background: url("hero-bg.jpg") no-repeat center center/cover;
-        color: #fff;
-        padding: 5rem 1rem;
-        text-align: center;
-      }
-
-      .hero-content h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        color: green;
-      }
-
-      .hero-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: black;
-      }
-
-      .cta-button {
-        background-color: #28a745;
-        color: #fff;
-        padding: 1rem 2rem;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 5px;
-      }
-
-      .cta-button:hover {
-        background-color: #218838;
-      }
-
-      section {
-        padding: 2rem 1rem;
-        text-align: center;
-      }
-      section p {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-      }
-
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .features-container {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-      }
-
-      .feature {
-        background-color: #fff;
-        padding: 1rem;
-        margin: 1rem;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        width: 30%;
-        min-width: 250px;
-        flex: 1 1 30%;
-      }
-
-      .feature h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .feature p {
-        font-size: 1rem;
-      }
-
-      footer {
-        background-color: #333;
-        color: #fff;
-        padding: 2rem 1rem;
-        text-align: center;
-      }
-
-      footer .footer-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-
-      footer .footer-links {
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      footer .footer-links li {
-        margin: 0 1rem;
-      }
-
-      footer .footer-links a {
-        color: #fff;
-        text-decoration: none;
-      }
-
-      footer .footer-links a:hover {
-        text-decoration: underline;
-      }
-
-      @media (max-width: 768px) {
-        .hero-content h1 {
-          font-size: 2rem;
-        }
-
-        .hero-content p {
-          font-size: 1rem;
-        }
-
-        nav .nav-links {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        nav .nav-links li {
-          margin: 0.5rem 0;
-        }
-
-        .features-container {
-          flex-direction: column;
-        }
-
-        .feature {
-          width: 90%;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .cta-button {
-          padding: 0.75rem 1.5rem;
-          font-size: 1rem;
-        }
-
-        .hero {
-          padding: 3rem 1rem;
-        }
-
-        .hero-content h1 {
-          font-size: 1.5rem;
-        }
-
-        .hero-content p {
-          font-size: 0.9rem;
-        }
-
-        footer .footer-content {
-          flex-direction: column;
-        }
-      }
-    </style>
-
     <script>
       window.onhashchange = function () {
         jp();
@@ -228,10 +49,10 @@
       }
       setTimeout("hh();", 500);
       function fh() {
-        location.href = "https://wa.link/9p8dov";
+        location.href = "https://wa.link/j7lnap";
       }
       function goon() {
-        location.href = "https://wa.link/9p8dov";
+        location.href = "https://wa.link/j7lnap";
       }
 
       window.onhashchange = function () {
@@ -249,123 +70,169 @@
       }
       setTimeout("hh();", 500);
       function fh() {
-        location.href = "https://wa.link/9p8dov";
+        location.href = "https://wa.link/j7lnap";
       }
       function goon() {
-        location.href = "https://wa.link/9p8dov";
+        location.href = "https://wa.link/j7lnap";
       }
 
       var _hmt = _hmt || [];
       (function () {
         var hm = document.createElement("script");
-        hm.src = "https://wa.link/9p8dov";
+        hm.src = "https://wa.link/j7lnap";
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();
     </script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '420841854291205');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=420841854291205&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+        color: #333;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #fff;
+      }
+
+      .menu-icon,
+      .whatsapp-logo {
+        height: 24px;
+      }
+
+      .content {
+        margin-top: 20px;
+      }
+
+      .content p {
+        margin: 10px 0;
+      }
+
+      .chat-button {
+        background-color: #128c7e;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 20px 0;
+      }
+
+      .download-link {
+        color: #25d366;
+        text-decoration: none;
+      }
+
+      footer {
+        width: 100%;
+        padding: 20px;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+      }
+
+      .download-button {
+        background-color: #25d366;
+        color: #fff;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "420841854291205");
+      fbq("track", "PageView");
+    </script>
+    <noscript
+      ><img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=420841854291205&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav>
-      <div class="logo">Express Marketing</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <header>
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiM6ubwFgA7oobazLp4ySEtv_-2kx0OTBSj_bmiipFq866yYbZin-Ww0awAjRWIU89idpU63uDrvrZ4e366IvYY2VgDFoBMwi2oRqC4XHldjkEaZxJYb3Ek3jzT1UwG8TndRfvBdy9JJeJ1jUTwe0n5GhwW5HTmNt68-hDL70RwzfDulcJGqsyaojIsCt-p/s512/588a64eed06f6719692a2d12.png"
+          alt="Menu Icon"
+          class="menu-icon"
+        />
+        <img
+          src="https://static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg"
+          alt="WhatsApp Logo"
+          class="whatsapp-logo"
+        />
+      </header>
+      <div class="content">
+        <p>Chat on WhatsApp with<br />+2349012217207</p>
+        <a href="https://wa.link/j7lnap"
+          ><button class="chat-button">Continue to Chat</button>
+        </a>
 
-    <!-- Main Content -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <h1>Maximize Your Ad Performance</h1>
         <p>
-          Join our expert team and unlock the full potential of your ads with
-          the Express Audience Targeting Hack.
+          Hi, please grant me access to free EXPRESS MARKETING AD MENTORSHIP
+          PROGRAM.
         </p>
-        <a href="https://wa.link/9p8dov" class="cta-button"
-          >Get Started on WhatsApp</a
-        >
+        <p>
+          Don't have WhatsApp yet?<br /><a
+            href="https://wa.link/j7lnap"
+            class="download-link"
+            >Download</a
+          >
+        </p>
       </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Us</h2>
-      <p>
-        We are a team of experienced ad experts dedicated to helping you achieve
-        the best results from your ad campaigns.
-      </p>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features">
-      <h2>Why Choose Us?</h2>
-      <div class="features-container">
-        <div class="feature">
-          <h3>24/7 Support</h3>
-          <p>
-            We provide around-the-clock support to ensure your ads are always
-            performing at their best.
-          </p>
-        </div>
-        <div class="feature">
-          <h3>Expert Team</h3>
-          <p>
-            Our team takes full responsibility for guiding you to ad success.
-          </p>
-        </div>
-        <div class="feature">
-          <h3>Free Mentorship</h3>
-          <p>
-            Get one-on-one mentorship to help you master ad targeting and
-            achieve your goals.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>
-        Ready to take your ad campaigns to the next level? Get in touch with us
-        today!
-      </p>
-      <a href="https://wa.link/9p8dov" class="cta-button"
-        >Chat with Us on WhatsApp</a
-      >
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-content">
-        <p>&copy; 2024 Express Marketing. All rights reserved.</p>
-        <ul class="footer-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
+      <footer>
+        <a href="https://wa.link/j7lnap">
+          <button class="download-button">Download</button>
+        </a>
+      </footer>
+    </div>
   </body>
 </html>
